@@ -1,8 +1,11 @@
 ﻿import "./PaginationItem.css";
 
-const PaginationItem = ({className = "", content}) => {
+const PaginationItem = ({onClick, content, className = ""}) => {
 	return (
-		<div className={"pagination-item" + className}>{content}</div>
+		<button className={`pagination-item ${className}`}
+				onClick={onClick}>
+			{content}
+		</button>
 	);
 };
 

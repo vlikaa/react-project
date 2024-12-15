@@ -1,0 +1,13 @@
+﻿div.character {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	color: #fff;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1rem;
+}
+
+div > img {
+	width: 250px;
+	height: 200px;
+}

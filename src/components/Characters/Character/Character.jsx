@@ -1,4 +1,6 @@
-﻿const Character = ({ characterData }) => {
+﻿import "./Character.css"
+
+const Character = ({ characterData }) => {
 	return (
 		<div className="character">
 			<img src={characterData.image} alt="character-img" />
