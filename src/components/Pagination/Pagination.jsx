@@ -1,6 +1,6 @@
 import PaginationItem from "./PaginationItem/PaginationItem";
 
-const Pagination = ({info, url, setUrl, currentPage, setCurrentPage}) => {
+const Pagination = ({info, setUrl, currentPage, setCurrentPage}) => {
 	const getStartPage = (currentPage, pagesCount) => {
 		if (currentPage === pagesCount) {
 			return currentPage - 4;

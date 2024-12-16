@@ -12,7 +12,7 @@ function App() {
 		fetch(url)
 			.then(r => r.json())
 			.then(data => {
-				setCharactersData(prev => ({
+				setCharactersData( () => ({
 					info: data.info,
 					results: data.results
 				}));
@@ -23,7 +23,7 @@ function App() {
 		<>
 			<main>
 				<Characters charactersData={charactersData.results} />
-				<Pagination info={charactersData.info} url={url} setUrl={setUrl} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+				<Pagination info={charactersData.info} setUrl={setUrl} currentPage={currentPage} setCurrentPage={setCurrentPage} />
 			</main>
 		</>
 	);

@@ -35,6 +35,7 @@ button.pagination-item.arrow {
 }
 
 button.pagination-item.arrow.disabled {
+	pointer-events: none;
 	background-color: #0E0E0E;
 	color: #2F2F2F;
 	cursor: default;
