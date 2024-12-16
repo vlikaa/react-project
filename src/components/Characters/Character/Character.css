@@ -11,3 +11,7 @@ div > img {
 	width: 250px;
 	height: 200px;
 }
+
+div > span {
+	height: 1rem;
+}

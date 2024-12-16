@@ -6,6 +6,7 @@ import Pagination from "./components/Pagination/Pagination";
 function App() {
 	const [charactersData, setCharactersData] = useState({ info: {pages: 0, prev: null, next: null}, results: [] });
 	const [url, setUrl] = useState("https://rickandmortyapi.com/api/character");
+	const [currentPage, setCurrentPage] = useState(1);
 
 	useEffect(() => {
 		fetch(url)
@@ -22,7 +23,7 @@ function App() {
 		<>
 			<main>
 				<Characters charactersData={charactersData.results} />
-				<Pagination info={charactersData.info} setUrl={setUrl} />
+				<Pagination info={charactersData.info} url={url} setUrl={setUrl} currentPage={currentPage} setCurrentPage={setCurrentPage} />
 			</main>
 		</>
 	);
