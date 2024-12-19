@@ -16,7 +16,7 @@ function App() {
 
 	useEffect(() => {
 		setIsLoading(true);
-		setHasError(false); // сбрасываем ошибку при попытке нового запроса
+		setHasError(false);
 
 		fetch(url)
 			.then(r => {
