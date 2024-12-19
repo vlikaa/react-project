@@ -7,7 +7,7 @@ import Loader from "./components/Loader/Loader";
 function App() {
 	const [charactersData, setCharactersData] = useState({
 		info: { pages: 0, prev: null, next: null },
-		results: [],
+		results: []
 	});
 	const [url, setUrl] = useState("https://rickandmortyapi.com/api/character");
 	const [currentPage, setCurrentPage] = useState(1);
