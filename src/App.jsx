@@ -1,21 +1,29 @@
 import './App.css';
-import {useReducer} from "react";
+import {createContext, useReducer} from "react";
+import CountComponent from "./components/CountComponent/CountComponent";
+import StepComponent from "./components/StepComponent/StepComponent";
+
+export const CounterContext = createContext(null);
 
 const stepReducer = (state, action) => {
 	switch (action.type) {
-		case 'increment':
+		case "increment":
 			return state + 1;
-		case 'decrement':
+		case "decrement":
 			return state <= 1 ? state : state - 1;
+		default:
+			return state;
 	}
 }
 
 const countReducer = (state, action) => {
 	switch (action.type) {
-		case 'increment':
-			return state + action.payload;
-		case 'decrement':
-			return state - action.payload;
+		case "increment":
+			return state + action.payload.step;
+		case "decrement":
+			return state - action.payload.step;
+		default:
+			return state;
 	}
 }
 
@@ -25,39 +33,11 @@ const App = () => {
 
 	return (
 		<>
-			<button
-				onClick={() => dispatchStep({
-					type: 'decrement'
-				})}
-			>-
-			</button>
-			<span>{step}</span>
-			<button
-				onClick={() => dispatchStep({
-					type: 'increment'
-				})}
-			>+
-			</button>
-
-
-			<br/>
-
-
-			<button
-				onClick={() => dispatchCount({
-					type: 'decrement',
-					payload: step
-				})}
-			>-
-			</button>
-			<span>{count}</span>
-			<button
-				onClick={() => dispatchCount({
-					type: 'increment',
-					payload: step
-				})}
-			>+
-			</button>
+			<CounterContext.Provider value={{step, count, dispatchStep, dispatchCount}}>
+				<StepComponent/>
+				<br/>
+				<CountComponent/>
+			</CounterContext.Provider>
 		</>
 
 	)
