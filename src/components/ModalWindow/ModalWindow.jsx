@@ -1,8 +1,8 @@
-﻿// import './ModalWindow.css';
+﻿import './ModalWindow.css';
 import {useEffect} from "react";
 import {createPortal} from "react-dom";
 
-const ModalWindow = ({isOpen, onClose}) => {
+const ModalWindow = ({isOpen, onClose, character}) => {
 	useEffect(() => {
 		const handleKeyDown = e => {
 			if (e.key === 'Escape') {
@@ -16,13 +16,13 @@ const ModalWindow = ({isOpen, onClose}) => {
 	}, []);
 
 	return isOpen && createPortal(
-		<div id='modal'>
+		<div id="modal">
 			<div className="content">
 				<div className="header">
-					<div className="title">salam</div>
+					<div className="title">{character.name}</div>
 					<div className="close-btn" tabIndex={0} onClick={onClose} onKeyDown={e => {
 						if (e.key === 'Enter' || e.key === ' ' /* For space button */) onClose()
-					}} role='button'></div>
+					}} role="button"></div>
 				</div>
 				<hr/>
 			</div>

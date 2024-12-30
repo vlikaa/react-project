@@ -1,18 +1,23 @@
 import './App.css';
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import Characters from "./components/Characters/Characters";
 import Pagination from "./components/Pagination/Pagination";
 import Loader from "./components/Loader/Loader";
+import ModalView from "./components/ModalWindow/ModalWindow";
+
+export const RootContext = createContext(null);
 
 function App() {
 	const [charactersData, setCharactersData] = useState({
-		info: { pages: 0, prev: null, next: null },
+		info: {pages: 0, prev: null, next: null},
 		results: []
 	});
 	const [url, setUrl] = useState("https://rickandmortyapi.com/api/character");
 	const [currentPage, setCurrentPage] = useState(1);
 	const [isLoading, setIsLoading] = useState(false);
 	const [hasError, setHasError] = useState(false);
+	const [selectedCharacter, setSelectedCharacter] = useState(null);
+	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	useEffect(() => {
 		setIsLoading(true);
@@ -26,7 +31,7 @@ function App() {
 				return r.json();
 			})
 			.then(data => {
-				setCharactersData( () => ({
+				setCharactersData(() => ({
 					info: data.info,
 					results: data.results
 				}));
@@ -42,16 +47,21 @@ function App() {
 		<>
 			<main>
 				{isLoading || hasError ? (
-					<Loader />
+					<Loader/>
 				) : (
 					<>
-						<Characters charactersData={charactersData.results} />
+						<RootContext.Provider value={{setIsModalOpen, setSelectedCharacter}}>
+							<Characters charactersData={charactersData.results} />
+						</RootContext.Provider>
+
 						<Pagination
 							info={charactersData.info}
 							setUrl={setUrl}
 							currentPage={currentPage}
 							setCurrentPage={setCurrentPage}
 						/>
+
+						<ModalView isOpen={isModalOpen} character={selectedCharacter} onClose={() => setIsModalOpen(false)} />
 					</>
 				)}
 			</main>
