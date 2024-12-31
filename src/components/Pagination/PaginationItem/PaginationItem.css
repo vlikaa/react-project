@@ -31,7 +31,6 @@ button.pagination-item.arrow {
 	color: black;
 	width: 5rem;
 	font-size: 2rem;
-	align-items: flex-start;
 }
 
 button.pagination-item.arrow.disabled {

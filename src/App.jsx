@@ -47,7 +47,7 @@ function App() {
 		<>
 			<main>
 				{isLoading || hasError ? (
-					<Loader/>
+					<Loader />
 				) : (
 					<>
 						<RootContext.Provider value={{setIsModalOpen, setSelectedCharacter}}>

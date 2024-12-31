@@ -8,11 +8,11 @@
 	cursor: pointer;
 }
 
-div > img {
-	width: 200px;
-	height: 150px;
+div.character > img {
+	width: 175px;
+	height: 125px;
 }
 
-div > span {
+div.character > span {
 	height: 1rem;
 }

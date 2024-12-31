@@ -1,4 +1,4 @@
-﻿import './ModalWindow.css';
+﻿import styles from './ModalWindow.module.css';
 import {useEffect} from "react";
 import {createPortal} from "react-dom";
 
@@ -16,15 +16,36 @@ const ModalWindow = ({isOpen, onClose, character}) => {
 	}, []);
 
 	return isOpen && createPortal(
-		<div id="modal">
-			<div className="content">
-				<div className="header">
-					<div className="title">{character.name}</div>
-					<div className="close-btn" tabIndex={0} onClick={onClose} onKeyDown={e => {
-						if (e.key === 'Enter' || e.key === ' ' /* For space button */) onClose()
-					}} role="button"></div>
+		<div id={styles["modal"]}>
+			<div className={styles["content"]}>
+				<div className={styles["close-btn"]} tabIndex={0} onClick={onClose} onKeyDown={e => {
+					if (e.key === 'Enter' || e.key === ' ') {
+						onClose();
+					}
+				}} role="button"/>
+
+				<div id={styles["image"]}>
+					<img src={character.image} alt="character-img"/>
 				</div>
-				<hr/>
+				<div id={styles["character-card"]}>
+					<div className={styles["section"]}>
+						<h2>{character.name}</h2>
+						<span className="status">
+							<span className="status-icon"/>
+							{character.status} - {character.species}
+						</span>
+					</div>
+
+					<div className={styles["section"]}>
+						<span>Last known location:</span>
+						{character.location.name ?? "unknown"}
+					</div>
+
+					<div className={styles["section"]}>
+						<span>First seen in:</span>
+						{character.origin.name ?? "unknown"}
+					</div>
+				</div>
 			</div>
 		</div>,
 		document.body

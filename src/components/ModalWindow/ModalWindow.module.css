@@ -1,0 +1,101 @@
+﻿#modal {
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+
+	width: 100vw;
+	height: 100vh;
+
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+div#modal > div.content {
+	position: relative;
+
+	display: flex;
+
+	width: 650px;
+	height: 250px;
+
+	border-radius: 1rem;
+
+	background-color: #000;
+	color: #fff;
+
+	font-family: -apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+
+div#modal > div.content > div#image {
+	height: 100%;
+}
+
+div#modal > div.content > div#image > img {
+	height: 100%;
+	border-radius: 1rem 0 0 1rem;
+}
+
+div#modal > div.content > div#character-card {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+
+	padding: 1rem;
+}
+
+div#modal > div.content > div#character-card > div.section {
+	display: flex;
+	flex-direction: column;
+	gap: 0.2rem;
+}
+
+.close-btn button {
+	background: none;
+	border: none;
+	padding: 4px;
+}
+
+.close-btn {
+	--size: 1.5rem;
+
+	position: absolute;
+	top: 0.5rem;
+	right: 0.5rem;
+
+	cursor: pointer;
+
+	width: var(--size);
+	height: var(--size);
+}
+
+.close-btn:focus,
+.close-btn:focus-within {
+	outline: 4px solid #FF9900;
+}
+
+.close-btn::after,
+.close-btn::before {
+	content: '';
+
+	position: absolute;
+	display: block;
+	width: 3px;
+	height: var(--size);
+	background-color: #FF9900;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) rotate(var(--rotate));
+	border-radius: 4px;
+}
+
+.close-btn::after {
+	--rotate: 45deg;
+}
+
+.close-btn::before {
+	--rotate: -45deg;
+}
