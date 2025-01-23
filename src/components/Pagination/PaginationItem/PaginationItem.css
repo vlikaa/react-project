@@ -32,6 +32,7 @@ button.pagination-item.arrow {
 	width: 5rem;
 	font-size: 2rem;
 	align-items: flex-start;
+	line-height: 1;
 }
 
 button.pagination-item.arrow.disabled {
